@@ -2,10 +2,10 @@
 # TODO: move scores file to /var/games!
 #
 # Conditional build:
-# _without_gtk				don't build gtk client
-# _without_curses			don't build curses client
-# _without_sdl				don't use sdl sound output
-# _without_esd				don't use esd sound output
+%bcond_without gtk		# don't build gtk client
+%bcond_without curses		# don't build curses client
+%bcond_without sdl		# don't use sdl sound output
+%bcond_without esd		# don't use esd sound output
 #
 Summary:	Drug dealing game
 Summary(pl):	Gra polegaj±ca na handlowaniu narkotykami
@@ -18,14 +18,14 @@ Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 # Source0-md5:	77cdbc59e7550cfda7dfb7f6b7a01050
 Patch0:		%{name}-desktop.patch
 URL:		http://dopewars.sourceforge.net/
-%{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
-%{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
+%{?with_sdl:BuildRequires:	SDL-devel >= 1.0.0}
+%{?with_sdl:BuildRequires:	SDL_mixer-devel}
 BuildRequires:	autoconf
 BuildRequires:	automake
-%{!?_without_esd:BuildRequires:	esound-devel >= 0.0.20}
+%{?with_esd:BuildRequires:	esound-devel >= 0.0.20}
 BuildRequires:	glib2-devel >= 2.0.0
-%{!?_without_gtk:BuildRequires:	gtk+2-devel >= 2.0.0}
-%{!?_without_curses:BuildRequires:	ncurses-devel}
+%{?with_gtk:BuildRequires:	gtk+2-devel >= 2.0.0}
+%{?with_curses:BuildRequires:	ncurses-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -67,11 +67,11 @@ rm -f missing
 %configure \
 	--enable-plugins \
 	--enable-networking \
-	%{!?_without_esd:--with-esd} \
-	%{!?_without_sdl:--with-sdl} \
-	%{!?_without_curses:--enable-curses-client} \
-	%{!?_without_gtk:--enable-gui-client} \
-	%{!?_without_gtk:--enable-gui-server}
+	%{?with_esd:--with-esd} \
+	%{?with_sdl:--with-sdl} \
+	%{?with_curses:--enable-curses-client} \
+	%{?with_gtk:--enable-gui-client} \
+	%{?with_gtk:--enable-gui-server}
 
 %{__make} CFLAGS="%{rpmcflags} -Wall -I/usr/include/ncurses"
 
