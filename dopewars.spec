@@ -10,12 +10,12 @@
 Summary:	Drug dealing game
 Summary(pl):	Gra polegaj±ca na handlowaniu narkotykami
 Name:		dopewars
-Version:	1.5.8
+Version:	1.5.9
 Release:	1
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
-# Source0-md5:	d2321652075806ac21b2716dbb416b29
+# Source0-md5:	77cdbc59e7550cfda7dfb7f6b7a01050
 URL:		http://dopewars.sourceforge.net/
 %{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
