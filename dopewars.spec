@@ -15,6 +15,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
+# Source0-md5:	d2321652075806ac21b2716dbb416b29
 URL:		http://dopewars.sourceforge.net/
 %{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
