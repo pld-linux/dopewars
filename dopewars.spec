@@ -11,11 +11,12 @@ Summary:	Drug dealing game
 Summary(pl):	Gra polegaj±ca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.9
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 # Source0-md5:	77cdbc59e7550cfda7dfb7f6b7a01050
+Patch0:		%{name}-desktop.patch
 URL:		http://dopewars.sourceforge.net/
 %{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
@@ -56,6 +57,7 @@ poleceñ (poka¿e je dopewars -h).
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 rm -f missing
@@ -75,13 +77,13 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Games
+install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
 	DESTDIR=${RPM_BUILD_ROOT}
 
 # I think this could be done somehow prettier
-mv $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Games/dopewars.desktop $RPM_BUILD_ROOT%{_applnkdir}/Games
+mv $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Games/dopewars.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
 rm -f doc/help/Makefile*
 
@@ -100,6 +102,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0660,root,games) %config(noreplace) %verify(not size mtime md5) %{_datadir}/dopewars.sco
 %{_mandir}/man6/*
 %{_libdir}/%{name}
-%{_applnkdir}/Games/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
 %{_datadir}/%{name}
