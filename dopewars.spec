@@ -24,7 +24,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_esd:BuildRequires:	esound-devel >= 0.0.20}
 BuildRequires:	glib2-devel >= 2.0.0
-%{?with_gtk:BuildRequires:	gtk+2-devel >= 2.0.0}
+%{?with_gtk:BuildRequires:	gtk+2-devel >= 1:2.0.0}
 %{?with_curses:BuildRequires:	ncurses-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
