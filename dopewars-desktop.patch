@@ -14,5 +14,5 @@ diff -urN aaa/dopewars-1.5.9/dopewars.desktop dopewars-1.5.9/dopewars.desktop
 +Terminal=false
  Type=Application
 +Categories=Application;Game;ArcadeGame;
-+Encoding=UF-8
++Encoding=UTF-8
 +# vi: encoding=utf-8
