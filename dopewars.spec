@@ -1,10 +1,12 @@
 #
+# TODO: move scores file to /var/games!
+#
 # Conditional build:
 # _without_gtk				don't build gtk client
 # _without_curses			don't build curses client
 # _without_sdl				don't use sdl sound output
 # _without_esd				don't use esd sound output
-
+#
 Summary:	Drug dealing game
 Summary(pl):	Gra polegaj±ca na handlowaniu narkotykami
 Name:		dopewars
@@ -14,14 +16,14 @@ License:	GPL
 Group:		Applications/Games
 Source0:	http://prdownloads.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 URL:		http://dopewars.sourceforge.net/
+%{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
+%{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{!?_without_esd:BuildRequires:	esound-devel >= 0.0.20}
 Buildrequires:	glib2-devel >= 2.0.0
 %{!?_without_gtk:BuildRequires:	gtk+2-devel >= 2.0.0}
 %{!?_without_curses:BuildRequires:	ncurses-devel}
-%{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
-%{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,22 +35,23 @@ The first thing you need to do is pay off your debt to the Loan Shark.
 After that, your goal is to make as much money as possible (and stay
 alive)! You have one month of game time to make your fortune.
 
-dopewars supports multiple players via. TCP/IP. Chatting to and
+dopewars supports multiple players via TCP/IP. Chatting to and
 fighting with other players (computer or human) is supported; check
 the command line switches (via dopewars -h) for further information.
 
 %description -l pl
 dopewars jest symulacj± wyimaginowanego narkotykowego rynku, bazuj±c±
-na starej grze Johna E. Dell Drug Wars. Jest to gra w amerykañskim
-stylu polegaj±ca na kupowaniu, sprzedawaniu i omijaniu policji!
+na starej grze Drug Wars autorstwa Johna E. Della. Jest to gra w
+amerykañskim stylu polegaj±ca na kupowaniu, sprzedawaniu i omijaniu
+policji!
 
-Pierwsz± rzecz± jak± musisz zrobiæ jest sp³acenie d³ugu. Potem celem
-jest zdobycie jak najwiêkszej ilo¶ci pieniêdzy (i prze¿ycie)! Masz
-jeden miesi±c gry aby zdobyæ fortunê.
+Pierwsz± rzecz± jak± trzeba zrobiæ jest sp³acenie d³ugu. Potem celem
+jest zdobycie jak najwiêkszej ilo¶ci pieniêdzy (i prze¿ycie)! Gracz ma
+jeden miesi±c gry na zdobycie fortuny.
 
 W dopewars mo¿na graæ z wieloma graczami poprzez TCP/IP. Mo¿na tak¿e z
-nimi rozmawiaæ i walczyæ; u¿yj dopewars -h aby zdobyæ dalsze
-informacje.
+nimi rozmawiaæ i walczyæ; wiêcej informacji w opisie parametrów linii
+poleceñ (poka¿e je dopewars -h).
 
 %prep
 %setup -q
@@ -59,31 +62,31 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
-		--enable-plugins \
-		--enable-networking \
-    %{!?_without_esd:--with-esd} \
-    %{!?_without_sdl:--with-sdl} \
-		%{!?_without_curses:--enable-curses-client} \
-		%{!?_without_gtk:--enable-gui-client} \
-		%{!?_without_gtk:--enable-gui-server}
+	--enable-plugins \
+	--enable-networking \
+	%{!?_without_esd:--with-esd} \
+	%{!?_without_sdl:--with-sdl} \
+	%{!?_without_curses:--enable-curses-client} \
+	%{!?_without_gtk:--enable-gui-client} \
+	%{!?_without_gtk:--enable-gui-server}
 
 %{__make} CFLAGS="%{rpmcflags} -Wall -I/usr/include/ncurses"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d ${RPM_BUILD_ROOT}%{_applnkdir}/Games
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Games
 
 %{__make} install DESTDIR=${RPM_BUILD_ROOT}
 
 # I think this could be done somehow prettier
-mv ${RPM_BUILD_ROOT}%{_datadir}/gnome/apps/Games/dopewars.desktop ${RPM_BUILD_ROOT}%{_applnkdir}/Games
+mv $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Games/dopewars.desktop $RPM_BUILD_ROOT%{_applnkdir}/Games
 
 rm -f doc/help/Makefile*
 
 %find_lang %{name}
 
 %clean
-rm -rf ${RPM_BUILD_ROOT}
+rm -rf $RPM_BUILD_ROOT
 
 %post
 %{_bindir}/dopewars -C %{_datadir}/dopewars.sco
@@ -92,9 +95,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %defattr(644,root,root,755)
 %doc ChangeLog LICENCE README doc/{*.html,help}
 %attr(2755,root,games) %{_bindir}/*
-%attr(0660,root,games) %config %{_datadir}/dopewars.sco
+%attr(0660,root,games) %config(noreplace) %verify(not size mtime md5) %{_datadir}/dopewars.sco
 %{_mandir}/man6/*
 %{_libdir}/%{name}
 %{_applnkdir}/Games/*
-%{_datadir}/pixmaps/*
+%{_pixmapsdir}/*
 %{_datadir}/%{name}
