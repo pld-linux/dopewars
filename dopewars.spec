@@ -22,7 +22,7 @@ URL:		http://dopewars.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{!?_without_esd:BuildRequires:	esound-devel >= 0.0.20}
-Buildrequires:	glib2-devel >= 2.0.0
+BuildRequires:	glib2-devel >= 2.0.0
 %{!?_without_gtk:BuildRequires:	gtk+2-devel >= 2.0.0}
 %{!?_without_curses:BuildRequires:	ncurses-devel}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
