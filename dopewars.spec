@@ -14,7 +14,7 @@ Version:	1.5.8
 Release:	1
 License:	GPL
 Group:		Applications/Games
-Source0:	http://prdownloads.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 URL:		http://dopewars.sourceforge.net/
 %{!?_without_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{!?_without_sdl:BuildRequires:	SDL_mixer-devel}
