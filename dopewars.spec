@@ -77,7 +77,8 @@ rm -f missing
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Games
 
-%{__make} install DESTDIR=${RPM_BUILD_ROOT}
+%{__make} install \
+	DESTDIR=${RPM_BUILD_ROOT}
 
 # I think this could be done somehow prettier
 mv $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Games/dopewars.desktop $RPM_BUILD_ROOT%{_applnkdir}/Games
