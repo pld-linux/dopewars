@@ -1,0 +1,16 @@
+diff -urN aaa/dopewars-1.5.9/dopewars.desktop dopewars-1.5.9/dopewars.desktop
+--- aaa/dopewars-1.5.9/dopewars.desktop	2001-05-30 04:03:44.000000000 +0200
++++ dopewars-1.5.9/dopewars.desktop	2003-12-10 16:27:13.000000000 +0100
+@@ -1,8 +1,12 @@
+ [Desktop Entry]
+ Name=dopewars
+ Name[de]=Drogenkrieg
++Name[pl]=Wojny narkotykowe
+ Comment=dopewars drug dealing game
++Comment[pl]=Gra polegająca na handlowaniu narkotykami
+ Exec=dopewars
+ Icon=dopewars-weed.png
+ Terminal=0
+ Type=Application
++Categories=Application;Game;ArcadeGame;
++# vi: encoding=utf-8
