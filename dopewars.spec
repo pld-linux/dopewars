@@ -2,7 +2,7 @@
 # TODO: move scores file to /var/games!
 #
 # Conditional build:
-%bcond_without gtk		# don't build gtk client
+%bcond_without gtk		# don't build GTK+ client
 %bcond_without curses		# don't build curses client
 %bcond_without sdl		# don't use sdl sound output
 %bcond_without esd		# don't use esd sound output
