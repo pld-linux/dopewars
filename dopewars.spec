@@ -11,7 +11,7 @@ Summary:	Drug dealing game
 Summary(pl):	Gra polegaj±ca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.9
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
@@ -73,7 +73,8 @@ rm -f missing
 	%{?with_gtk:--enable-gui-client} \
 	%{?with_gtk:--enable-gui-server}
 
-%{__make} CFLAGS="%{rpmcflags} -Wall -I/usr/include/ncurses"
+%{__make} \
+	CFLAGS="%{rpmcflags} -Wall -I/usr/include/ncurses"
 
 %install
 rm -rf $RPM_BUILD_ROOT
