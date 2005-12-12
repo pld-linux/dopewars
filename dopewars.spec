@@ -100,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog LICENCE README doc/{*.html,help}
 %attr(2755,root,games) %{_bindir}/*
-%attr(0660,root,games) %config(noreplace) %verify(not size mtime md5) %{_datadir}/dopewars.sco
+%attr(660,root,games) %config(noreplace) %verify(not md5 mtime size) %{_datadir}/dopewars.sco
 %{_mandir}/man6/*
 %{_libdir}/%{name}
 %{_desktopdir}/*
