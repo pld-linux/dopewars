@@ -74,7 +74,7 @@ rm -f missing
 	%{?with_gtk:--enable-gui-server}
 
 %{__make} \
-	CFLAGS="%{rpmcflags} -Wall -I%{_includedir}/ncurses"
+	CFLAGS="%{rpmcflags} -Wall -I/usr/include/ncurses"
 
 %install
 rm -rf $RPM_BUILD_ROOT
