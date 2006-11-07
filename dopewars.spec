@@ -103,6 +103,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(660,root,games) %config(noreplace) %verify(not md5 mtime size) %{_datadir}/dopewars.sco
 %{_mandir}/man6/*
 %{_libdir}/%{name}
-%{_desktopdir}/*
+%{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 %{_datadir}/%{name}
