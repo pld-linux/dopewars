@@ -8,7 +8,7 @@
 %bcond_without	esd		# don't use esd sound output
 #
 Summary:	Drug dealing game
-Summary(pl.UTF-8):   Gra polegająca na handlowaniu narkotykami
+Summary(pl.UTF-8):	Gra polegająca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.9
 Release:	4
