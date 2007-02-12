@@ -8,7 +8,7 @@
 %bcond_without	esd		# don't use esd sound output
 #
 Summary:	Drug dealing game
-Summary(pl):	Gra polegaj±ca na handlowaniu narkotykami
+Summary(pl.UTF-8):   Gra polegajÄ…ca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.9
 Release:	4
@@ -41,19 +41,19 @@ dopewars supports multiple players via TCP/IP. Chatting to and
 fighting with other players (computer or human) is supported; check
 the command line switches (via dopewars -h) for further information.
 
-%description -l pl
-dopewars jest symulacj± wyimaginowanego narkotykowego rynku, bazuj±c±
+%description -l pl.UTF-8
+dopewars jest symulacjÄ… wyimaginowanego narkotykowego rynku, bazujÄ…cÄ…
 na starej grze Drug Wars autorstwa Johna E. Della. Jest to gra w
-amerykañskim stylu polegaj±ca na kupowaniu, sprzedawaniu i omijaniu
+amerykaÅ„skim stylu polegajÄ…ca na kupowaniu, sprzedawaniu i omijaniu
 policji!
 
-Pierwsz± rzecz± jak± trzeba zrobiæ jest sp³acenie d³ugu. Potem celem
-jest zdobycie jak najwiêkszej ilo¶ci pieniêdzy (i prze¿ycie)! Gracz ma
-jeden miesi±c gry na zdobycie fortuny.
+PierwszÄ… rzeczÄ… jakÄ… trzeba zrobiÄ‡ jest spÅ‚acenie dÅ‚ugu. Potem celem
+jest zdobycie jak najwiÄ™kszej iloÅ›ci pieniÄ™dzy (i przeÅ¼ycie)! Gracz ma
+jeden miesiÄ…c gry na zdobycie fortuny.
 
-W dopewars mo¿na graæ z wieloma graczami poprzez TCP/IP. Mo¿na tak¿e z
-nimi rozmawiaæ i walczyæ; wiêcej informacji w opisie parametrów linii
-poleceñ (poka¿e je dopewars -h).
+W dopewars moÅ¼na graÄ‡ z wieloma graczami poprzez TCP/IP. MoÅ¼na takÅ¼e z
+nimi rozmawiaÄ‡ i walczyÄ‡; wiÄ™cej informacji w opisie parametrÃ³w linii
+poleceÅ„ (pokaÅ¼e je dopewars -h).
 
 %prep
 %setup -q
