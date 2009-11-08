@@ -1,0 +1,11 @@
+--- dopewars-1.5.12/configure.in~	2005-12-30 22:29:09.000000000 +0100
++++ dopewars-1.5.12/configure.in	2009-11-08 12:11:02.885196813 +0100
+@@ -363,7 +363,7 @@
+ fi
+ 
+ dnl Tell dopewars where the high scores, docs and locale files are
+-DP_EXPAND_DIR(DPSCOREDIR, '${localstatedir}')
++DP_EXPAND_DIR(DPSCOREDIR, '/var/games/dopewars')
+ AC_DEFINE_UNQUOTED(DPSCOREDIR, "$DPSCOREDIR",
+                    [The directory containing the high score file])
+ AC_SUBST(DPSCOREDIR)
