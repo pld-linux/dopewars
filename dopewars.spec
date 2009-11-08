@@ -1,6 +1,4 @@
 #
-# TODO: move scores file to /var/games!
-#
 # Conditional build:
 %bcond_without	gtk		# don't build GTK+ client
 %bcond_without	curses		# don't build curses client
@@ -11,7 +9,7 @@ Summary:	Drug dealing game
 Summary(pl.UTF-8):	Gra polegająca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.12
-Release:	0.1
+Release:	1
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
@@ -96,13 +94,17 @@ rm -f doc/help/Makefile*
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-%{_bindir}/dopewars -C %{_datadir}/dopewars.sco
+%triggerpostun -- dopewars < 1.5.12-0.1
+# move scorefile
+mv -f %{_datadir}/dopewars.sco.rpmsave /var/games/dopewars/dopewars.sco
+chown root:games /var/games/dopewars/dopewars.sco
+chmod 660 /var/games/dopewars/dopewars.sco
+%{_bindir}/dopewars -C /var/games/dopewars/dopewars.sco
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog LICENCE README doc/{*.html,help}
-%attr(2755,root,games) %{_bindir}/*
+%attr(2755,root,games) %{_bindir}/dopewars
 %attr(770,root,games) /var/games/dopewars
 %{_mandir}/man6/*
 %{_libdir}/%{name}
