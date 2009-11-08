@@ -10,13 +10,14 @@
 Summary:	Drug dealing game
 Summary(pl.UTF-8):	Gra polegająca na handlowaniu narkotykami
 Name:		dopewars
-Version:	1.5.9
-Release:	4
+Version:	1.5.12
+Release:	0.1
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
-# Source0-md5:	77cdbc59e7550cfda7dfb7f6b7a01050
+# Source0-md5:	debf749de9053dc2fb2e74c37ae06206
 Patch0:		%{name}-desktop.patch
+Patch1:		%{name}-scoredir.patch
 URL:		http://dopewars.sourceforge.net/
 %{?with_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{?with_sdl:BuildRequires:	SDL_mixer-devel}
@@ -58,6 +59,7 @@ poleceń (pokaże je dopewars -h).
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
@@ -81,6 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_desktopdir}
 
 %{__make} install \
+	SCOREDIR=$RPM_BUILD_ROOT/var/games/dopewars \
 	DESTDIR=${RPM_BUILD_ROOT}
 
 # I think this could be done somehow prettier
@@ -100,7 +103,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog LICENCE README doc/{*.html,help}
 %attr(2755,root,games) %{_bindir}/*
-%attr(660,root,games) %config(noreplace) %verify(not md5 mtime size) %{_datadir}/dopewars.sco
+%attr(770,root,games) /var/games/dopewars
 %{_mandir}/man6/*
 %{_libdir}/%{name}
 %{_desktopdir}/*.desktop
