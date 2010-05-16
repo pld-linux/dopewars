@@ -22,9 +22,12 @@ URL:		http://dopewars.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?with_esd:BuildRequires:	esound-devel >= 0.0.20}
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 2.0.0
+BuildRequires:	gtk+-devel
 %{?with_gtk:BuildRequires:	gtk+2-devel >= 1:2.0.0}
 %{?with_curses:BuildRequires:	ncurses-devel}
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -90,8 +93,9 @@ mv $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Games/dopewars.desktop $RPM_BUILD_ROOT%
 rm -f doc/help/Makefile*
 
 # es_ES.po seems to be newer than es.po
-mv -f %{_datadir}/locale/es_ES/LC_MESSAGES/* %{_datadir}/locale/es/LC_MESSAGES/
-rm -rf %{_datadir}/locale/es_ES
+mv -f $RPM_BUILD_ROOT%{_datadir}/locale/es_ES/LC_MESSAGES/* \
+	$RPM_BUILD_ROOT%{_datadir}/locale/es/LC_MESSAGES/
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/es_ES
 
 %find_lang %{name}
 
