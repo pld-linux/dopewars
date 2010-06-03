@@ -3,13 +3,13 @@
 %bcond_without	gtk		# don't build GTK+ client
 %bcond_without	curses		# don't build curses client
 %bcond_without	sdl		# don't use sdl sound output
-%bcond_without	esd		# don't use esd sound output
+%bcond_with	esd		# don't use esd sound output
 #
 Summary:	Drug dealing game
 Summary(pl.UTF-8):	Gra polegająca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.12
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Games
 Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
