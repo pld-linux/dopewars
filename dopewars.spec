@@ -12,7 +12,7 @@ Version:	1.5.12
 Release:	4
 License:	GPL
 Group:		Applications/Games
-Source0:	http://dl.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 # Source0-md5:	debf749de9053dc2fb2e74c37ae06206
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-scoredir.patch
@@ -68,6 +68,7 @@ rm -f missing
 %{__autoconf}
 %{__automake}
 %configure \
+	LIBS="-ltinfo" \
 	--enable-plugins \
 	--enable-networking \
 	%{?with_esd:--with-esd} \
