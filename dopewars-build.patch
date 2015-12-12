@@ -1,0 +1,22 @@
+--- dopewars-1.5.12/src/gtkport/gtkport.c~	2005-12-30 03:37:32.000000000 +0100
++++ dopewars-1.5.12/src/gtkport/gtkport.c	2015-12-12 13:25:24.452515928 +0100
+@@ -5636,7 +5636,7 @@ gint GtkMessageBox(GtkWidget *parent, co
+ 
+   dialog = gtk_message_dialog_new(GTK_WINDOW(parent),
+                                   GTK_DIALOG_MODAL,
+-                                  type, buttons, Text);
++                                  type, buttons, "%s", Text);
+   if (Title) gtk_window_set_title(GTK_WINDOW(dialog), Title);
+ 
+   retval = gtk_dialog_run(GTK_DIALOG(dialog));
+--- dopewars-1.5.12/src/sound.c~	2005-12-30 03:37:32.000000000 +0100
++++ dopewars-1.5.12/src/sound.c	2015-12-12 13:27:06.155164134 +0100
+@@ -190,7 +190,7 @@ void SoundOpen(gchar *drivername)
+       err = g_strdup_printf(_("Invalid plugin \"%s\" selected.\n"
+                               "(%s available; now using \"%s\".)"),
+                             drivername, plugins, NOPLUGIN);
+-      g_log(NULL, G_LOG_LEVEL_CRITICAL, err);
++      g_log(NULL, G_LOG_LEVEL_CRITICAL, "%s", err);
+       g_free(plugins);
+       g_free(err);
+     }

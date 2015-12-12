@@ -9,13 +9,14 @@ Summary:	Drug dealing game
 Summary(pl.UTF-8):	Gra polegająca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.12
-Release:	7
+Release:	8
 License:	GPL
 Group:		Applications/Games
 Source0:	http://downloads.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 # Source0-md5:	debf749de9053dc2fb2e74c37ae06206
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-scoredir.patch
+Patch2:		%{name}-build.patch
 URL:		http://dopewars.sourceforge.net/
 %{?with_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{?with_sdl:BuildRequires:	SDL_mixer-devel}
@@ -61,6 +62,7 @@ poleceń (pokaże je dopewars -h).
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
@@ -92,6 +94,7 @@ install -d $RPM_BUILD_ROOT%{_desktopdir}
 mv $RPM_BUILD_ROOT%{_datadir}/gnome/apps/Games/dopewars.desktop $RPM_BUILD_ROOT%{_desktopdir}
 
 rm -f doc/help/Makefile*
+rm -r $RPM_BUILD_ROOT%{_docdir}/%{name}-%{version}
 
 # es_ES.po seems to be newer than es.po
 mv -f $RPM_BUILD_ROOT%{_datadir}/locale/es_ES/LC_MESSAGES/* \
