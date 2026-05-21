@@ -9,7 +9,7 @@ Summary:	Drug dealing game
 Summary(pl.UTF-8):	Gra polegająca na handlowaniu narkotykami
 Name:		dopewars
 Version:	1.5.12
-Release:	9
+Release:	10
 License:	GPL
 Group:		Applications/Games
 Source0:	http://downloads.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
@@ -17,11 +17,10 @@ Source0:	http://downloads.sourceforge.net/dopewars/%{name}-%{version}.tar.gz
 Patch0:		%{name}-desktop.patch
 Patch1:		%{name}-scoredir.patch
 Patch2:		%{name}-build.patch
+Patch3:		%{name}-gcc14.patch
 URL:		http://dopewars.sourceforge.net/
 %{?with_sdl:BuildRequires:	SDL-devel >= 1.0.0}
 %{?with_sdl:BuildRequires:	SDL_mixer-devel}
-BuildRequires:	autoconf
-BuildRequires:	automake
 %{?with_esd:BuildRequires:	esound-devel >= 0.0.20}
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 2.0.0
@@ -63,12 +62,9 @@ poleceń (pokaże je dopewars -h).
 %patch -P0 -p1
 %patch -P1 -p1
 %patch -P2 -p1
+%patch -P3 -p1
 
 %build
-rm -f missing
-%{__aclocal}
-%{__autoconf}
-%{__automake}
 %configure \
 	LIBS="-ltinfo" \
 	--enable-plugins \
@@ -80,7 +76,7 @@ rm -f missing
 	%{?with_gtk:--enable-gui-server}
 
 %{__make} \
-	CFLAGS="%{rpmcflags} -Wall -I/usr/include/ncurses"
+	CFLAGS="%{rpmcflags} %{rpmcppflags} -Wall -I/usr/include/ncurses"
 
 %install
 rm -rf $RPM_BUILD_ROOT
